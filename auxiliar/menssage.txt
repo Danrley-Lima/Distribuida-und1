@@ -1,0 +1,5 @@
+ola;oi
+oi;ola
+tudo bem?;tudo sim, e vc?
+gosta de programar;sim programo muito, qual lingugem vc usa?
+Tchau;Tchau

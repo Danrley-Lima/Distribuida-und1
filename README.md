@@ -2,7 +2,7 @@
 
 Compilar o java rmi:
 ```
-  javac -d RMI-Java/bin RMI-Java/src/*.java
+  javac -d RMI-Java/bin RMI-Java/src/chatbot/*.java RMI-Java/src/*.java
 ```
 Rodar o servidor java rmi:
 ```

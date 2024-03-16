@@ -1,6 +1,8 @@
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+import chatbot.ChatBot;
+
 public class MessageServiceImpl extends UnicastRemoteObject implements MessageService {
 
     protected MessageServiceImpl() throws RemoteException {
@@ -9,8 +11,12 @@ public class MessageServiceImpl extends UnicastRemoteObject implements MessageSe
 
     @Override
     public String sendMessage(String message) throws RemoteException {
+        ChatBot cBot = new ChatBot();
+
         System.out.println("Mensagem recebida do cliente: " + message);
-        return "Mensagem recebida com sucesso: " + message;
+
+        return cBot.Mensagem(message);
+        //return "Mensagem recebida com sucesso: " + message;
     }
 
     public static void main(String[] args) {

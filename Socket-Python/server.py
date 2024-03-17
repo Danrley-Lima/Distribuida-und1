@@ -1,21 +1,31 @@
 import socket
 import threading
+from chatterbot import ChatBot
+from chatterbot.trainers import ChatterBotCorpusTrainer
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
 
 
-def handle_client(client_socket, address):
+def handle_client(client_socket, address, bot: ChatBot):
     while True:
         data = client_socket.recv(1024)
         if not data:
             break
-        print(f"Mensagem recebida de {address[0]}:{address[1]}: {data.decode('utf-8')}")
+        response = data.decode("utf-8")
+        print(f"Mensagem recebida de {address[0]}:{address[1]}: {response}")
 
-        response = "Mensagem recebida pelo servidor"
+        response = bot.get_response(response).text
         client_socket.send(response.encode("utf-8"))
 
     client_socket.close()
 
 
 def start_server(host: str, port: int):
+    bot = ChatBot("MeuBot")
+    trainer = ChatterBotCorpusTrainer(bot)
+    trainer.train("chatterbot.corpus.portuguese")
+
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((host, port))
     server.listen()
@@ -26,7 +36,7 @@ def start_server(host: str, port: int):
         print(f"Conexão recebida de {address[0]}:{address[1]}")
 
         client_handler = threading.Thread(
-            target=handle_client, args=(client_socket, address)
+            target=handle_client, args=(client_socket, address, bot)
         )
         client_handler.start()
 

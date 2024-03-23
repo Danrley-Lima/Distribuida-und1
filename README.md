@@ -1,6 +1,6 @@
 # Distribuída-und1
 
-## Java RMI:
+## RMI Java :
 
 Compilar o java rmi:
 ```
@@ -17,7 +17,7 @@ Rodar o cliente java rmi:
 
 ***
 
-## Python Socket:
+## Socket Python:
 
 Criar ambiente:
 ```
@@ -34,4 +34,23 @@ Rodar o servidor socket:
 Rodar o cliente socket:
 ```
   python .\Socket-Python\client.py
+```
+
+## REST Python:
+
+Criar ambiente:
+```
+  python -m venv REST-Python
+```
+Instale as dependências:
+```
+  pip install --upgrade --no-deps --force-reinstall -r requirements.txt
+```
+Rodar o servidor socket:
+```
+  python .\REST-Python\server.py
+```
+Rodar o cliente socket:
+```
+  python .\REST-Python\client.py
 ```

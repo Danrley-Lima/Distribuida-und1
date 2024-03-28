@@ -46,11 +46,11 @@ Instale as dependências:
 ```
   pip install --upgrade --no-deps --force-reinstall -r requirements.txt
 ```
-Rodar o servidor socket:
+Rodar o servidor REST:
 ```
   python .\REST-Python\server.py
 ```
-Rodar o cliente socket:
+Rodar o cliente REST:
 ```
-  python .\REST-Python\client.py
+  javac RestClient.java && java RestClient
 ```
